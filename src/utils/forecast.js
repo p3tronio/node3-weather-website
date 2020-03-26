@@ -16,9 +16,11 @@ const forecast = (longitude, latitude, callback) => {
 
         } else {
 
-            data = body.currently;
+            const data = body.currently;
+            const summary = body.hourly.summary; 
+
             celsius = (data.temperature - 32) * 5/9;
-            callback(undefined, "It is currently " + celsius.toPrecision(3) + "ºC with "+ data.precipProbability.toPrecision(1)*100 + "% chance of rain.");
+            callback(undefined, summary + " It is currently " + celsius.toPrecision(3) + "ºC with "+ data.precipProbability.toPrecision(1)*100 + "% chance of rain.");
        
         }
     })
